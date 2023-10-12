@@ -1,0 +1,272 @@
+/* imported google fonts */
+@import url('https://fonts.googleapis.com/css2?family=Roboto&family=Young+Serif&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,700&display=swap');
+
+/* resets any default values */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* global variables: use these to create custom property values*/
+:root {
+    --box-outline: 0.2rem solid black;
+    --box-shadow: 0.5rem 0.5rem black;
+    --box-padding: 2rem;
+    --section-gap: 5rem 0 5rem;
+}
+
+/* default text styles */
+h1 {
+    font-family: 'Young Serif', cursive;
+    font-size: 3rem; letter-spacing: 2pt;
+    text-align: center;
+    color: black;
+}
+    h2 {
+        font-family: 'Roboto', cursive;
+        font-weight: 700; font-size: 1.7rem;
+        line-height: 2.5rem; letter-spacing: 2pt;
+        color: black;
+    }
+    p {
+        font-family: 'Roboto', cursive;
+        font-weight: 400; font-size: 1.3rem;
+        line-height: 1.7rem;
+        padding-top: 0.5rem;
+        color: black;
+    }
+
+/* this contains all body elements and centers them on the page*/
+.wrapper {
+    max-width: 75vw;
+    margin: 0 auto;
+}
+
+/* navigation bar */
+nav {
+    background-color: black;
+    padding: 1.5rem;
+}
+
+#menu {
+    display: flex; gap: 1rem;
+    justify-content: center;
+    list-style-type: none;
+}
+    #menu-toggle {
+        display: none;
+        background-color: rgba(0, 0, 0, 0);
+        color: white;
+        border: none;
+    }
+    #menu.active {
+        display: flex;
+    }
+
+#menu a {
+    text-decoration: none;
+    font-family: 'Roboto', cursive;
+    color: white;
+    display: block;
+}
+
+
+/* hero image */
+.hero-image{
+    background-image: url(../images/wind-turbine.jpg);
+    background-size: cover; background-position: center;
+    min-height: 20rem;
+    padding: 1rem;
+
+    /* this will help center text on the hero image */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+    .hero-image h1 {
+        background-color: white;
+        padding: 1.5rem 3rem;
+        border: var(--box-outline);
+        box-shadow: var(--box-shadow);
+    }
+
+/* about section */
+.about-grid {
+    display: grid;
+    max-width: 100%;
+    grid-template-columns: repeat(auto-fit, minmax(22rem, 3fr));
+    /* this automatically resizes grid columns by calculating screen size
+    grid items will scale to 20rem as a breakpoint, then wrap around each other using autofit if scaled lower */ 
+
+    margin: var(--section-gap);
+    gap: 5rem;
+    align-items: center;
+}    
+    .about-grid img {
+        width: 100%;
+        min-width: 75%;
+        object-fit: cover;
+
+        border: var(--box-outline);
+        box-shadow: var(--box-shadow);
+    }
+    .about-text {
+        padding: var(--box-padding);
+    }
+        .about-text h2 {
+            margin-top: 1rem;
+            text-align: center;
+        }
+
+/* gallery section */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(22rem, 3fr));
+    gap: var(--box-padding);
+    margin: var(--section-gap);
+}
+    .gallery-grid div {
+        padding: var(--box-padding);
+        border: var(--box-outline);
+        box-shadow: var(--box-shadow);
+
+        /* this centers text in the div without changing the shape, helps with consistent look */
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: center;
+    }
+
+    .gallery-grid img {
+        height: 100%;
+        width: 100%;
+
+        object-fit: cover;
+        object-position: center;
+        aspect-ratio: 1;
+
+        border: var(--box-outline);
+        box-shadow: var(--box-shadow);
+    }
+
+/* extras section */
+.extras-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(22rem, 2fr));
+    gap: var(--box-padding);
+    margin: var(--section-gap);
+}
+    .extras-grid div {
+        display: flex;
+        flex-flow: column nowrap;
+        padding: var(--box-padding);
+
+        border: var(--box-outline);
+        box-shadow: var(--box-shadow);
+    }
+    .extras-grid img {
+        height: 100%;
+        width: 100%;
+        padding-bottom: 1.5rem;
+
+        object-fit: cover;
+        object-position: center;
+        aspect-ratio: 1;
+    }
+
+    #credits {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+
+        margin-top: 5rem;
+        padding: var(--box-padding);
+        background-color: black;
+    }
+        #credits > p {
+            color: white;
+        }
+
+/* laptop screen */
+@media screen and (max-width: 1080px) {
+
+    h1 {
+        font-size: 2.5rem;
+    }
+        h2 {
+            font-size: 1.5rem;
+            line-height: 2rem;
+        }
+        p {
+            font-size: 1.1rem;
+        }
+
+}
+
+/* tablet screen */
+@media screen and (max-width: 800px) {
+
+    :root {
+        --section-gap: 3rem 0 3rem;
+    }
+
+    /* from this point, the menu will be cut down to a small icon */
+    #menu-toggle {
+        display: block;
+    }
+        #menu {
+            display: none;
+            position: absolute;
+            flex-direction: column;
+            background-color: black;
+            padding: 1rem 3rem;
+        }
+
+    .wrapper {
+        max-width: 85vw;
+    }
+
+
+    h1 {
+        font-size: 2.3rem;
+    }
+        h2 {
+            font-size: 1.3rem;
+            line-height: 1.7rem;
+        }
+        p {
+            font-size: 1rem;
+            line-height: 1.5rem;
+        }    
+        
+    .hero-image h1 {
+        padding: 1.5rem;
+    }
+}
+
+/* phone screen */
+@media screen and (max-width: 480px) {
+
+    :root {
+        --section-gap: 1.5rem 0 1.5rem;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+    h2 {
+        font-size: 1.1rem;
+        line-height: 1.3rem;
+    }
+
+    .wrapper {
+        max-width: 95vw;
+    }
+
+    .about-grid {
+        gap: 1.5rem;
+    }
+
+}
